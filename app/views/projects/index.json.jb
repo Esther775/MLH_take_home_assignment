@@ -1,6 +1,9 @@
 @array.map do |commit|
   {
-    id: commit["author"]["id"],
-    commit: commit["author"]["login"],
+    contributors: [
+      id: commit["author"]["id"],
+      commit: commit["author"]["login"],
+      message: commit["commit"]["message"],
+    ],
   }
 end
