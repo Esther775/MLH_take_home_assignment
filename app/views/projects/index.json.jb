@@ -1,0 +1,5 @@
+@nodejs_array["0"]["commit"].map do |project|
+  {
+    key: project,
+  }
+end

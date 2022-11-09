@@ -1,0 +1,22 @@
+###
+# NodeJs.org data
+get  https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100
+Accept: application/vnd.github+json
+Authorization: Bearer 
+
+
+
+###
+# Rails data
+get  https://api.github.com/repos/eileencodes/rails/commits
+Accept: application/vnd.github+json
+Authorization: Bearer 
+###
+# Ruby data
+get  https://api.github.com/repos/XrXr/ruby/commits
+Accept: application/vnd.github+json
+Authorization: Bearer 
+
+
+###
+GET http://localhost:3000/projects/seed.json
