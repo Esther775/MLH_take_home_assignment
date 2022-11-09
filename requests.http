@@ -1,8 +1,8 @@
 ###
 # NodeJs.org data
-get  https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100
+get  https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main
 Accept: application/vnd.github+json
-Authorization: Bearer 
+Authorization: Bearer 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
 
 
 
@@ -10,13 +10,18 @@ Authorization: Bearer
 # Rails data
 get  https://api.github.com/repos/eileencodes/rails/commits
 Accept: application/vnd.github+json
-Authorization: Bearer 
+Authorization: Bearer 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
 ###
 # Ruby data
 get  https://api.github.com/repos/XrXr/ruby/commits
 Accept: application/vnd.github+json
-Authorization: Bearer 
+Authorization: Bearer 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
 
 
 ###
 GET http://localhost:3000/projects/seed.json
+Content-Type: application/json
+
+{
+  "id": 3
+}

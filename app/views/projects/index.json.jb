@@ -1,5 +1,6 @@
-@nodejs_array["0"]["commit"].map do |project|
+@array.map do |commit|
   {
-    key: project,
+    id: commit["author"]["id"],
+    commit: commit["author"]["login"],
   }
 end
