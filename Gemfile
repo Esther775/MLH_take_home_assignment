@@ -14,6 +14,8 @@ gem "puma", "~> 5.0"
 
 gem "jb"
 
+gem 'rest-client'
+
 gem 'dotenv-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
