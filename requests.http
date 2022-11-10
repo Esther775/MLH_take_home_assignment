@@ -16,9 +16,6 @@ Accept: application/vnd.github+json
 
 
 ###show User commits on a repo
-GET http://localhost:3000/projects/seed.json
+GET http://localhost:3000/projects/seed/3.json
 Content-Type: application/json
 
-{
-  "id": 1 
-}

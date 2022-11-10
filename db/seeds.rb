@@ -8,13 +8,42 @@
 require "http"
 
 def nodejs_commits
+  project = Project.create(name: "node_js_data")
   @array = HTTP.get("https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100").parse(:json)
   @array.each do |commit|
     User.create(
       github_username: commit["author"]["login"],
       message: commit["commit"]["message"],
       email: commit["commit"]["author"]["email"],
-      project_id: 1,
+      project_id: project.id,
+      # date:
+    )
+  end
+end
+
+def rails_commits
+  project = Project.create(name: "rails_data")
+  @array = HTTP.get("https://api.github.com/repos/eileencodes/rails/commits?sha=main&per_page=100").parse(:json)
+  @array.each do |commit|
+    User.create(
+      github_username: commit["commit"]["author"]["name"], #nont sure why ["author"]["login"] is breaking
+      message: commit["commit"]["message"],
+      email: commit["commit"]["author"]["email"],
+      project_id: project.id,
+      # date:
+    )
+  end
+end
+
+def ruby_commits
+  project = Project.create(name: "ruby_data")
+  @array = HTTP.get("https://api.github.com/repos/XrXr/ruby/commits?sha=master&per_page=100").parse(:json)
+  @array.each do |commit|
+    User.create(
+      github_username: commit["author"]["login"],
+      message: commit["commit"]["message"],
+      email: commit["commit"]["author"]["email"],
+      project_id: project.id,
       # date:
     )
   end
@@ -22,3 +51,5 @@ end
 
 puts "Seeded data"
 nodejs_commits()
+# rails_commits()
+ruby_commits()
