@@ -9,47 +9,83 @@ require "http"
 
 def nodejs_commits
   project = Project.create(name: "node_js_data")
-  @array = HTTP.get("https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100").parse(:json)
-  @array.each do |commit|
-    User.create(
-      github_username: commit["author"]["login"],
-      message: commit["commit"]["message"],
-      email: commit["commit"]["author"]["email"],
-      project_id: project.id,
-      # date:
-    )
+  array = HTTP.get("https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100").parse(:json)
+  array.each do |commit|
+    #check if user is unique
+    if User.find_by(github_username: commit["author"]["login"]) == nil
+      user = User.create(
+        github_username: commit["author"]["login"],
+        email: commit["commit"]["author"]["email"],
+        project_id: project.id,
+      )
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+      #if User already exists and is making another commit
+    elsif User.find_by(github_username: commit["author"]["login"]) != nil
+      user = User.find_by(github_username: commit["author"]["login"])
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+    end
   end
 end
 
 def rails_commits
   project = Project.create(name: "rails_data")
-  @array = HTTP.get("https://api.github.com/repos/eileencodes/rails/commits?sha=main&per_page=100").parse(:json)
-  @array.each do |commit|
-    User.create(
-      github_username: commit["commit"]["author"]["name"], #nont sure why ["author"]["login"] is breaking
-      message: commit["commit"]["message"],
-      email: commit["commit"]["author"]["email"],
-      project_id: project.id,
-      # date:
-    )
+  array = HTTP.get("https://api.github.com/repos/eileencodes/rails/commits?sha=main&per_page=100").parse(:json)
+  array.each do |commit|
+    #check if user is unique
+    if User.find_by(github_username: commit["commit"]["author"]["name"]) == nil
+      user = User.create(
+        github_username: commit["commit"]["author"]["name"], #nont sure why ["author"]["login"] is breaking
+        email: commit["commit"]["author"]["email"],
+        project_id: project.id,
+      )
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+      #if User already exists and is making another commit
+    elsif User.find_by(github_username: commit["commit"]["author"]["name"]) != nil
+      user = User.find_by(github_username: commit["commit"]["author"]["name"])
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+    end
   end
 end
 
 def ruby_commits
   project = Project.create(name: "ruby_data")
-  @array = HTTP.get("https://api.github.com/repos/XrXr/ruby/commits?sha=master&per_page=100").parse(:json)
-  @array.each do |commit|
-    User.create(
-      github_username: commit["author"]["login"],
-      message: commit["commit"]["message"],
-      email: commit["commit"]["author"]["email"],
-      project_id: project.id,
-      # date:
-    )
+  array = HTTP.get("https://api.github.com/repos/XrXr/ruby/commits?sha=master&per_page=100").parse(:json)
+  array.each do |commit|
+    #check if user is unique
+    if User.find_by(github_username: commit["author"]["login"]) == nil
+      user = User.create(
+        github_username: commit["author"]["login"],
+        email: commit["commit"]["author"]["email"],
+        project_id: project.id,
+      )
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+      #if User already exists and is making another commit
+    elsif User.find_by(github_username: commit["author"]["login"]) != nil
+      user = User.find_by(github_username: commit["author"]["login"])
+      message = Message.create(
+        text: commit["commit"]["message"],
+        user_id: user.id,
+      )
+    end
   end
 end
 
 puts "Seeded data"
 nodejs_commits()
-# rails_commits()
+rails_commits()
 ruby_commits()

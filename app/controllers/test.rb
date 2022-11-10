@@ -1,4 +1,4 @@
 require "http"
 
-@array = HTTP.get("https://api.github.com/repos/eileencodes/rails/commits?sha=main&per_page=100").parse(:json)
-p @array[0]["author"]["login"]
+@array = HTTP.get("https://api.github.com/repos/esther775/mlh_take_home_assignment/stats/contributors").parse(:json)
+p @array
