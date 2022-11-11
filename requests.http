@@ -1,21 +1,14 @@
-###
-# NodeJs.org data additions/deletions
-get  https://api.github.com/repos/nodejs/nodejs.org/commits?sha=main&per_page=100
-Accept: application/vnd.github+json
+###show User data by project
+#select project using params
+GET http://localhost:3000/projects/seed/2.json
 
 
-
-###
-# Rails data
-get  https://api.github.com/repos/eileencodes/rails/commits
-Accept: application/vnd.github+json
-###
-# Ruby data
-get  https://api.github.com/repos/XrXr/ruby/commits
-Accept: application/vnd.github+json
-
-
-###show User commits on a repo
-GET http://localhost:3000/projects/seed/3.json
+### List User commits on a project
+GET http://localhost:3000/projects/user.json
 Content-Type: application/json
+
+{
+"user_id": 1,
+"project_id": 1
+}
 

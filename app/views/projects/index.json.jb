@@ -1,10 +1,8 @@
-@array.map do |commit|
+@ProjectsController.map do |commit|
   {
     contributors: [
-      github_username: commit["author"]["login"],
-      message: commit["commit"]["message"],
-      email: commit["commit"]["author"]["email"],
-    # date:
+      github_username: project.users.github_username
+      email: project.users.email
     ],
   }
 end

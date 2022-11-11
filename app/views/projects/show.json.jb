@@ -1,5 +1,10 @@
 {
-  id: @project.id,
-  created_at: @project.created_at,
-  updated_at: @project.updated_at
+  project_id: @project.id,
+  project_name: @project.name,
+  contributors: @project.users,
+# @project.users.each do |user|
+#   github_username: user.github_username
+
+#   end
+
 }
