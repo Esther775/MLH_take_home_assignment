@@ -1,6 +1,10 @@
 # README
 
+Run rails db:create rail: db:migrate rails:seed to create your database and schema file and seed the GitHub REST-api data.
 
-I have created three API calls to 3 different repos. Each repo is assigned to a number. Based on body params, a user can retrieve commit data on each repo
+In the requests.http file, the first endpoint allows a user to include a project_id as a url parameter and will show the user data contributions to that project.
+
+A second endpoint allows a user to enter two body params to locate a users activity on a specofoc project
+
 
 
