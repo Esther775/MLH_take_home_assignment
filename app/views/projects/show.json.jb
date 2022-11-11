@@ -1,7 +1,14 @@
 {
   project_id: @project.id,
   project_name: @project.name,
-  contributors: @project.users,
+  contributors: @project.users.map do |project|
+    {
+      user_id: project.id,
+      github_username: project.github_username,
+      email: project.email,
+    }
+  end,
+
 # @project.users.each do |user|
 #   github_username: user.github_username
 
